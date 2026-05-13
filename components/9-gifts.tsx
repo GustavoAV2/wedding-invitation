@@ -12,6 +12,7 @@ const GiftSection = () => {
     { label: "Pastel com Garapa", value: "R$ 50,00", link: "https://link.infinitepay.io/pastel00prosa/VC1D-2Yn0JetSKX-50,00" },
     { label: "Jantar a Dois", value: "R$ 100,00", link: "https://link.infinitepay.io/pastel00prosa/VC1D-2Ymyighmk1-100,00" },
     { label: "Um Churasco Top", value: "R$ 150,00", link: "https://link.infinitepay.io/pastel00prosa/VC1D-3qBW0nQjyz-150,00" },
+    { label: "Passeio do Casal", value: "R$ 300,00", link: "https://link.infinitepay.io/pastel00prosa/VC1D-LHZOI83xow-300,00" },
     { label: "Cota Pro Enxoval", value: "R$ 500,00", link: "https://link.infinitepay.io/pastel00prosa/VC1D-IosATv7ReP-500,00" },
   ];
 
