@@ -1,17 +1,18 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Heart, CreditCard, QrCode, Copy, Check } from 'lucide-react';
+import { Heart, CreditCard, QrCode, Copy, Check, ChevronRight } from 'lucide-react';
 
 const GiftSection = () => {
   const [copied, setCopied] = useState(false);
   const pixKey = "386b6249-5f19-4fc4-b59a-b81b948c849b";
 
-  const giftOptions = [
-    { label: "Ajuda para a Lua de Mel", value: "R$ 50,00" },
-    { label: "Jantar Especial", value: "R$ 100,00" },
-    { label: "Passeio Romântico", value: "R$ 200,00" },
-    { label: "Presente de Casamento", value: "Valor Livre" },
+  const creditCardOptions = [
+    { label: "Sorvete em Casal", value: "R$ 20,00", link: "https://link.infinitepay.io/pastel00prosa/VC1D-1HOVDrLEZT-20,00" },
+    { label: "Pastel com Garapa", value: "R$ 50,00", link: "https://link.infinitepay.io/pastel00prosa/VC1D-2Yn0JetSKX-50,00" },
+    { label: "Jantar a Dois", value: "R$ 100,00", link: "https://link.infinitepay.io/pastel00prosa/VC1D-2Ymyighmk1-100,00" },
+    { label: "Um Churasco Top", value: "R$ 150,00", link: "https://link.infinitepay.io/pastel00prosa/VC1D-3qBW0nQjyz-150,00" },
+    { label: "Cota Pro Enxoval", value: "R$ 500,00", link: "https://link.infinitepay.io/pastel00prosa/VC1D-IosATv7ReP-500,00" },
   ];
 
   const handleCopy = () => {
@@ -37,52 +38,60 @@ const GiftSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           {/* Pix Option */}
-          <div className="glass p-8 rounded-3xl border-purple-500/30 hover:border-purple-500/50 transition-all group">
+          <div className="glass p-8 rounded-3xl border-purple-500/30 hover:border-purple-500/50 transition-all group flex flex-col h-full">
             <QrCode className="w-12 h-12 text-purple-400 mx-auto mb-6 group-hover:scale-110 transition-transform" />
             <h3 className="text-2xl font-bold mb-4 text-slate-100">Pix</h3>
-            <p className="text-slate-400 mb-6">Chave Pix (Aleatória):</p>
-            <div className="bg-white/5 p-4 rounded-xl border border-white/10 font-mono text-purple-300 text-xs break-all mb-4">
-              {pixKey}
+            <p className="text-slate-400 mb-6 flex-grow">Para quem deseja presentear com qualquer valor de forma rápida e prática.</p>
+            <p className="text-slate-400 mb-6 flex-grow">Copie a chave Pix e cole no aplicativo do seu banco para presentear diretamente o casal.</p>
+            
+            <div className="space-y-4 mt-auto">
+              <p className="text-slate-400 text-sm italic">Chave Pix (Aleatória):</p>
+              <div className="bg-white/5 p-4 rounded-xl border border-white/10 font-mono text-purple-300 text-xs break-all mb-4">
+                {pixKey}
+              </div>
+              <button
+                onClick={handleCopy}
+                className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-purple-600/20 hover:bg-purple-600/40 text-purple-300 rounded-xl border border-purple-500/30 transition-all active:scale-95"
+              >
+                {copied ? (
+                  <>
+                    <Check size={18} /> Copiado!
+                  </>
+                ) : (
+                  <>
+                    <Copy size={18} /> Copiar Chave Pix
+                  </>
+                )}
+              </button>
             </div>
-            <button
-              onClick={handleCopy}
-              className="flex items-center gap-2 mx-auto px-6 py-2 bg-purple-600/20 hover:bg-purple-600/40 text-purple-300 rounded-lg border border-purple-500/30 transition-all active:scale-95"
-            >
-              {copied ? (
-                <>
-                  <Check size={18} /> Copiado!
-                </>
-              ) : (
-                <>
-                  <Copy size={18} /> Copiar Chave Pix
-                </>
-              )}
-            </button>
           </div>
 
           {/* Card Option */}
-          <div className="glass p-8 rounded-3xl border-blue-500/30 hover:border-blue-500/50 transition-all group flex flex-col justify-between">
-            <div>
+          <div className="glass p-8 rounded-3xl border-blue-500/30 hover:border-blue-500/50 transition-all group flex flex-col h-full">
+            <div className="mb-6">
               <CreditCard className="w-12 h-12 text-blue-400 mx-auto mb-6 group-hover:scale-110 transition-transform" />
               <h3 className="text-2xl font-bold mb-4 text-slate-100">Cartão de Crédito</h3>
-              <p className="text-slate-400 mb-8">Prefere presentear via cartão? Clique no botão abaixo para acessar nosso link de pagamento seguro.</p>
+              <p className="text-slate-400 mb-6">Selecione uma das opções abaixo para presentear via cartão em ambiente seguro:</p>
             </div>
-            <a 
-              href="#" 
-              target="_blank"
-              className="w-full py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-bold transition-colors shadow-lg shadow-blue-900/20"
-            >
-              Acessar Link de Pagamento
-            </a>
+            
+            <div className="grid grid-cols-2 gap-3 mt-auto">
+              {creditCardOptions.map((option) => (
+                <a 
+                  key={option.value}
+                  href={option.link} 
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center justify-between w-full p-4 bg-white/5 hover:bg-blue-600/20 border border-white/10 hover:border-blue-500/30 text-slate-300 rounded-xl transition-all group/btn"
+                >
+                  <div className="text-left">
+                    <p className="text-xs text-blue-400 font-semibold uppercase tracking-wider">{option.value}</p>
+                    <p className="text-sm font-medium">{option.label}</p>
+                  </div>
+                  <ChevronRight size={14} className="text-slate-500 group-hover/btn:translate-x-1 transition-transform flex-shrink-0" />
+                </a>
+              ))}
+            </div>
           </div>
-        </div>
-
-        <div className="flex flex-wrap justify-center gap-4">
-          {giftOptions.map((option) => (
-            <div key={option.label} className="px-6 py-3 rounded-full bg-white/5 border border-white/10 text-slate-300 text-sm hover:bg-white/10 transition-colors">
-              <span className="font-semibold text-purple-300">{option.value}</span> — {option.label}
-            </div>
-          ))}
         </div>
       </div>
 

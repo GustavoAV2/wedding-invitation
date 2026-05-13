@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { MessageCircle, MapPin, Heart, Globe, Camera } from 'lucide-react';
+import { MessageCircle, Heart, Camera } from 'lucide-react';
 
 const Story = () => {
   return (
@@ -58,7 +58,7 @@ const Story = () => {
           </div>
 
           <p className="text-xl text-purple-200 font-serif italic pt-8">
-            "Por que gastei tanto tempo em vão, se minha vida começou quando encontrei você."
+            &quot;Por que gastei tanto tempo em vão, se minha vida começou quando encontrei você.&quot;
           </p>
         </div>
       </div>

@@ -2,10 +2,10 @@ BEGIN:VCALENDAR
 VERSION:2.0
 BEGIN:VEVENT
 URL:http://junior-e-brenda.hideak.com/convite
-DTSTART:20260612T210000Z
-DTEND:20260613T020000Z
-SUMMARY:Casamento e Junior & Brenda
+DTSTART:20260612T220000Z
+DTEND:20260613T010000Z
+SUMMARY:Casamento de Junior & Brenda
 DESCRIPTION:Casamento de Junior & Brenda
-LOCATION:Inserir Localização Aqui
+LOCATION:AD Bom Jardim 2 - R. Oscár Gonçalves, 322 - Bom Jardim, Ipatinga - MG
 END:VEVENT
 END:VCALENDAR

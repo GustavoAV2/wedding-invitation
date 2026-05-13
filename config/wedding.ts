@@ -1,5 +1,5 @@
 export const WEDDING_CONFIG = {
-  dataCasamento: "2026-06-12T18:00:00",
+  dataCasamento: "2026-06-12T19:00:00",
   
   fotos: [
     "/images/image-01.jpg",

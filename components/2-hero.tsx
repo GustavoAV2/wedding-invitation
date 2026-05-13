@@ -4,7 +4,11 @@ import { useState, useEffect, useMemo } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { WEDDING_CONFIG } from '@/config/wedding';
 
-const Hero = () => {
+interface HeroProps {
+  isSpecial?: boolean;
+}
+
+const Hero = ({ isSpecial }: HeroProps) => {
   const [timeLeft, setTimeLeft] = useState({ dias: 0, horas: 0, minutos: 0, segundos: 0 });
   const [isMarried, setIsMarried] = useState(false);
 
@@ -49,7 +53,7 @@ const Hero = () => {
     <section className="relative h-screen flex flex-col items-center justify-center text-center px-4 z-10">
       
       <h1 className="text-4xl md:text-6xl font-serif font-bold tracking-tighter mb-6 text-slate-100 drop-shadow-lg animate-slide-in-top fill-mode-both">
-        Através do Universo.
+        {isSpecial ? "Vocês serão nossos conselheiros." : "Através do Universo."}
       </h1>
       
       <div className="flex flex-col items-center gap-6 mb-12 animate-zoom-in fill-mode-both">

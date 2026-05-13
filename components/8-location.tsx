@@ -9,16 +9,16 @@ const Location = () => {
           <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-purple-500/20 border border-purple-400/30 text-purple-200 text-sm font-medium">
             <MapPin size={14} /> Localização
           </div>
-          <h2 className="text-4xl font-bold font-serif text-slate-100">Igreja Bom Jardim 2</h2>
+          <h2 className="text-4xl font-bold font-serif text-slate-100">AD Bom Jardim 2</h2>
           <p className="text-lg text-slate-300 leading-relaxed">
-            Nossa união acontecerá na Igreja do Bairro Bom Jardim 2, com a celebração da cerimônia junto ao Pastor Ronaldo.
+            Nossa união acontecerá na Assembleia de Deus do Bairro Bom Jardim 2, com a celebração da cerimônia junto ao Pastor Ronaldo.
           </p>
           <div className="space-y-4">
             <div className="flex items-start gap-4">
               <div className="p-3 bg-white/5 rounded-xl"><Calendar className="text-purple-300" /></div>
               <div>
                 <p className="font-bold text-slate-200">Data e Hora</p>
-                <p className="text-slate-300">Sábado, 12 de Junho de 2026 às 18:00</p>
+                <p className="text-slate-300">Sábado, 12 de Junho de 2026 às 19:00</p>
               </div>
             </div>
             <div className="flex items-start gap-4">

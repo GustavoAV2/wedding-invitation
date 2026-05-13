@@ -1,21 +1,25 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Starfield from "@/components/1-starfield";
 import Hero from "@/components/2-hero";
 import QuickActions from "@/components/3-quickActions";
 import InfoCards from "@/components/4-infoCards";
 import Story from "@/components/5-story";
-import Gallery from "@/components/6-gallery";
-import Location from "@/components/7-location";
-import Footer from "@/components/8-footer";
+import Attire from "@/components/6-attire";
+import Gallery from "@/components/7-gallery";
+import Location from "@/components/8-location";
 import GiftSection from "@/components/9-gifts";
+import Footer from "@/components/10-footer";
 import Container from "@/shared/container";
 import Main from "@/shared/main";
 import StartExperience from "@/shared/start-experience";
 
-export default function Home() {
+function HomeContent() {
   const [hasStarted, setHasStarted] = useState(false);
+  const searchParams = useSearchParams();
+  const isSpecial = searchParams.has('special');
 
   return (
     <Container>
@@ -33,11 +37,12 @@ export default function Home() {
             Spotify: Meu Sonho - VICTIN (2024)
           </a>
           <div className="animate-fade-in fill-mode-forwards">
-            <Hero />
+            <Hero isSpecial={isSpecial} />
             <Main>
               <QuickActions />
               <InfoCards />
               <Story />
+              {isSpecial && <Attire />}
               <Gallery />
               <Location />
               <GiftSection />
@@ -47,5 +52,13 @@ export default function Home() {
         </>
       )}
     </Container>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={null}>
+      <HomeContent />
+    </Suspense>
   );
 }
