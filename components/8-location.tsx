@@ -18,7 +18,7 @@ const Location = () => {
               <div className="p-3 bg-white/5 rounded-xl"><Calendar className="text-purple-300" /></div>
               <div>
                 <p className="font-bold text-slate-200">Data e Hora</p>
-                <p className="text-slate-300">Sábado, 12 de Junho de 2026 às 19:00</p>
+                <p className="text-slate-300">Sexta, 12 de Junho de 2026 às 19:00</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
