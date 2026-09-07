@@ -6,7 +6,7 @@ interface Props {
 
 const Container = (props: Props) => {
   return (
-    <div className="min-h-screen text-slate-200 selection:bg-purple-500/30 overflow-x-hidden relative">
+    <div className="relative min-h-screen overflow-x-hidden text-[#f6efe7] selection:bg-[#a65a67]/50">
         {props.children}
     </div>
   );

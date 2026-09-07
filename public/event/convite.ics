@@ -1,11 +1,15 @@
 BEGIN:VCALENDAR
 VERSION:2.0
+PRODID:-//Eliane e Miguel//Convite de casamento//PT-BR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
 BEGIN:VEVENT
-URL:http://junior-e-brenda.hideak.com/convite
-DTSTART:20260612T220000Z
-DTEND:20260613T010000Z
-SUMMARY:Casamento de Junior & Brenda
-DESCRIPTION:Casamento de Junior & Brenda
-LOCATION:AD Bom Jardim 2 - R. Oscár Gonçalves, 322 - Bom Jardim, Ipatinga - MG
+UID:casamento-eliane-miguel-20261010@convite
+DTSTAMP:20260907T120000Z
+DTSTART;TZID=America/Sao_Paulo:20261010T110000
+DTEND;TZID=America/Sao_Paulo:20261010T150000
+SUMMARY:Casamento de Eliane & Miguel
+DESCRIPTION:Venha celebrar o amor, a vida e esse momento tão especial conosco.
+LOCATION:Edifício Paladium - Rua Joinville, 70 - Blumenau, SC
 END:VEVENT
 END:VCALENDAR

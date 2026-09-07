@@ -1,133 +1,90 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from 'react';
-import { createPortal } from 'react-dom';
-import { ChevronLeft, ChevronRight, X } from 'lucide-react';
-import { WEDDING_CONFIG } from '@/config/wedding';
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { WEDDING_CONFIG } from "@/config/wedding";
+
+type SelectedImage = { src: string; alt: string } | null;
 
 const Gallery = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [isPaused, setIsPaused] = useState(false);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedImage, setSelectedImage] = useState<SelectedImage>(null);
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const scroll = (direction: 'left' | 'right') => {
-    if (scrollRef.current) {
-      const { scrollLeft, clientWidth } = scrollRef.current;
-      const scrollAmount = clientWidth; 
-      const targetScroll = direction === 'left' ? scrollLeft - scrollAmount : scrollLeft + scrollAmount;
-      
-      scrollRef.current.scrollTo({ 
-        left: targetScroll, 
-        behavior: 'smooth' 
-      });
-    }
-  };
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
-    if (isPaused || selectedImage) return;
-
-    const interval = setInterval(() => {
-      if (scrollRef.current) {
-        const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-        if (scrollLeft + clientWidth >= scrollWidth - 20) {
-          scrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-          scroll('right');
-        }
-      }
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, [isPaused, selectedImage]);
-
-  // Prevent scrolling when modal is open
-  useEffect(() => {
-    if (selectedImage) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => { document.body.style.overflow = 'unset'; };
+    document.body.style.overflow = selectedImage ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [selectedImage]);
 
+  const scroll = (direction: "left" | "right") => {
+    const gallery = scrollRef.current;
+    if (!gallery) return;
+    gallery.scrollBy({
+      left: direction === "left" ? -gallery.clientWidth * 0.85 : gallery.clientWidth * 0.85,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <section className="glass rounded-[3rem] p-8 md:p-12 overflow-hidden">
-      <h2 className="text-4xl font-bold font-serif text-slate-100 mb-8 text-center">Nossos Momentos</h2>
-      
-      <div className="relative group px-4">
-        <div 
-          ref={scrollRef}
-          className="flex overflow-x-auto snap-x snap-mandatory gap-6 no-scrollbar pb-4"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-          onTouchStart={() => setIsPaused(true)}
-          onTouchEnd={() => setIsPaused(false)}
-        >
-          {WEDDING_CONFIG.fotos.map((foto, idx) => (
-            <div 
-              key={idx}
-              className="flex-none w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] snap-start aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl cursor-pointer"
-              onClick={() => setSelectedImage(foto)}
-            >
-              <img 
-                src={foto} 
-                alt={`Momento do casal ${idx + 1}`} 
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                loading="lazy"
-              />
-            </div>
-          ))}
+    <section className="overflow-hidden py-4">
+      <div className="mb-8 text-center">
+        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#b89466]">Nossa história em imagens</p>
+        <h2 className="mt-3 font-serif text-4xl font-semibold text-[#fffaf2] md:text-5xl">Momentos que guardamos</h2>
+      </div>
+
+      <div className="relative">
+        <div ref={scrollRef} className="no-scrollbar flex snap-x snap-mandatory items-center gap-5 overflow-x-auto px-1 pb-4">
+          {WEDDING_CONFIG.fotos.map((foto) => {
+            const landscape = foto.formato === "paisagem";
+            return (
+              <button
+                type="button"
+                key={foto.src}
+                onClick={() => setSelectedImage(foto)}
+                className={`relative shrink-0 snap-center overflow-hidden rounded-[1.75rem] border border-[#ead8bd]/15 bg-[#2b1d20] shadow-2xl transition-transform hover:scale-[1.01] ${
+                  landscape
+                    ? "aspect-[4/3] w-[88vw] max-w-[42rem]"
+                    : "aspect-[3/4] w-[76vw] max-w-[25rem]"
+                }`}
+                aria-label={`Ampliar: ${foto.alt}`}
+              >
+                <Image
+                  src={foto.src}
+                  alt={foto.alt}
+                  fill
+                  sizes={landscape ? "(max-width: 768px) 88vw, 672px" : "(max-width: 768px) 76vw, 400px"}
+                  className="object-cover"
+                />
+                <span className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
+              </button>
+            );
+          })}
         </div>
 
-        {/* Controls */}
-        <button 
-          onClick={(e) => { e.stopPropagation(); scroll('left'); }}
-          className="absolute -left-2 md:-left-4 top-1/2 -translate-y-1/2 p-2 md:p-3 bg-black/60 backdrop-blur-xl text-white rounded-full hover:bg-purple-500/50 transition-all flex items-center justify-center border border-white/10 shadow-lg z-20"
-          aria-label="Foto anterior"
-        >
-          <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" />
+        <button type="button" onClick={() => scroll("left")} className="absolute left-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-[#1b1114]/80 text-white backdrop-blur-md transition-colors hover:bg-[#7b3543]" aria-label="Fotos anteriores">
+          <ChevronLeft size={24} />
         </button>
-        <button 
-          onClick={(e) => { e.stopPropagation(); scroll('right'); }}
-          className="absolute -right-2 md:-right-4 top-1/2 -translate-y-1/2 p-2 md:p-3 bg-black/60 backdrop-blur-xl text-white rounded-full hover:bg-purple-500/50 transition-all flex items-center justify-center border border-white/10 shadow-lg z-20"
-          aria-label="Próxima foto"
-        >
-          <ChevronRight className="w-6 h-6 md:w-8 md:h-8" />
+        <button type="button" onClick={() => scroll("right")} className="absolute right-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-[#1b1114]/80 text-white backdrop-blur-md transition-colors hover:bg-[#7b3543]" aria-label="Próximas fotos">
+          <ChevronRight size={24} />
         </button>
       </div>
 
-      {/* Fullscreen Lightbox View - Rendered via Portal to break out of .glass container */}
       {mounted && selectedImage && createPortal(
-        <div 
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 backdrop-blur-xl transition-all duration-300 animate-in fade-in"
-          onClick={() => setSelectedImage(null)}
-        >
-          {/* Close button at the top-right corner of the page */}
-          <button 
-            className="absolute top-6 right-6 md:top-10 md:right-10 p-4 text-white/70 hover:text-white transition-colors z-[10000] cursor-pointer focus:outline-none"
-            onClick={() => setSelectedImage(null)}
-            aria-label="Fechar"
-          >
-            <X size={48} strokeWidth={1.5} />
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 p-4 backdrop-blur-lg" onClick={() => setSelectedImage(null)} role="dialog" aria-modal="true" aria-label="Foto ampliada">
+          <button type="button" onClick={() => setSelectedImage(null)} className="absolute right-5 top-5 z-10 rounded-full bg-white/10 p-3 text-white transition-colors hover:bg-white/20" aria-label="Fechar foto">
+            <X size={30} />
           </button>
-          
-          <div 
-            className="w-full h-full flex items-center justify-center p-4 md:p-12"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <img 
-              src={selectedImage} 
-              alt="Visualização em tela cheia" 
-              className="max-w-full max-h-full object-contain shadow-[0_0_50px_rgba(0,0,0,0.5)] animate-in zoom-in-95 duration-300"
-            />
+          <div className="relative h-full w-full" onClick={(event) => event.stopPropagation()}>
+            <Image src={selectedImage.src} alt={selectedImage.alt} fill sizes="100vw" className="object-contain" priority />
           </div>
         </div>,
-        document.body
+        document.body,
       )}
     </section>
   );

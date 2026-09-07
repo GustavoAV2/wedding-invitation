@@ -1,15 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Playfair_Display, Great_Vibes, JetBrains_Mono } from "next/font/google";
+import { Cormorant_Garamond, Great_Vibes, Montserrat } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const greatVibes = Great_Vibes({
@@ -18,39 +19,37 @@ const greatVibes = Great_Vibes({
   subsets: ["latin"],
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "Junior e Brenda | Através do Universo",
-  description: "Você está convidado para celebrar o nosso amor. 12 de Junho de 2026.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  title: "Eliane & Miguel | Amor, vida e um novo começo",
+  description:
+    "Venha celebrar conosco o amor, a vida e o início de uma nova etapa. 10 de outubro de 2026, às 11 horas, em Blumenau.",
   openGraph: {
-    title: "Convite de Casamento: Junior & Brenda",
-    description: "Através do Universo: Você está convidado para celebrar o nosso amor. Clique para ver os detalhes do nosso casamento.",
-    siteName: 'Junior e Brenda',
+    title: "Casamento de Eliane & Miguel",
+    description:
+      "10 de outubro de 2026, às 11 horas, no Edifício Paladium, em Blumenau.",
+    siteName: "Eliane & Miguel",
     images: [
       {
-        url: '/images/image-01.jpg',
+        url: "/og.png",
         width: 1200,
         height: 630,
-        alt: 'Convite de Casamento Junior e Brenda',
+        alt: "Eliane & Miguel — 10 de outubro de 2026, Blumenau",
       },
     ],
-    locale: 'pt_BR',
-    type: 'website',
+    locale: "pt_BR",
+    type: "website",
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Convite de Casamento: Junior & Brenda',
-    description: 'Você está convidado para celebrar o nosso amor.',
-    images: ['/images/image-01.jpg'],
+    card: "summary_large_image",
+    title: "Casamento de Eliane & Miguel",
+    description: "Amor, vida e um novo começo — 10 de outubro de 2026.",
+    images: ["/og.png"],
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: '#1b1c26',
+  themeColor: "#1b1114",
 };
 
 export default function RootLayout({
@@ -59,9 +58,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br">
+    <html lang="pt-BR">
       <body
-        className={`${inter.variable} ${playfair.variable} ${greatVibes.variable} ${jetbrainsMono.variable} antialiased`}
+        className={`${montserrat.variable} ${cormorant.variable} ${greatVibes.variable} antialiased`}
       >
         {children}
       </body>

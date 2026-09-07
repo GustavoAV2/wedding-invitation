@@ -6,7 +6,7 @@ interface Props {
 
 export default function Main(props: Props) {
   return (
-    <main className="relative z-10 max-w-5xl mx-auto px-6 py-24 space-y-12 md:space-y-16">
+    <main className="relative z-10 mx-auto max-w-6xl space-y-12 px-5 py-20 md:space-y-20 md:px-8 md:py-28">
       {props.children}
     </main>
   );

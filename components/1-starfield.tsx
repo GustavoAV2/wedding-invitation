@@ -1,101 +1,68 @@
 "use client";
 
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
-const Starfield = () => {
+const CelebrationBackdrop = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    const ctx = canvas?.getContext("2d");
+    if (!canvas || !ctx) return;
 
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    let animationFrameId: number;
-    let stars: {
+    let frame = 0;
+    let particles: Array<{
       x: number;
       y: number;
-      radius: number;
+      size: number;
       alpha: number;
-      velocity: number;
-      twinkleSpeed: number;
-      twinkleDir: number;
-    }[] = [];
+      speed: number;
+      drift: number;
+    }> = [];
 
-    const init = () => {
+    const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      stars = [];
-      
-      const numStars = window.innerWidth < 768 ? 400 : 800;
-      for (let i = 0; i < numStars; i++) {
-        stars.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          radius: Math.random() * 1.2,
-          alpha: Math.random(),
-          velocity: (Math.random() * 0.15) + 0.05,
-          twinkleSpeed: (Math.random() * 0.03) + 0.01,
-          twinkleDir: Math.random() > 0.5 ? 1 : -1
-        });
-      }
+      particles = Array.from({ length: window.innerWidth < 768 ? 35 : 70 }, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: 0.8 + Math.random() * 2.2,
+        alpha: 0.12 + Math.random() * 0.35,
+        speed: 0.08 + Math.random() * 0.18,
+        drift: (Math.random() - 0.5) * 0.12,
+      }));
     };
 
-    const animate = () => {
+    const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      stars.forEach(star => {
-        star.alpha += star.twinkleSpeed * star.twinkleDir;
-        if (star.alpha <= 0.1) {
-          star.alpha = 0.1;
-          star.twinkleDir = 1;
-        } else if (star.alpha >= 1) {
-          star.alpha = 1;
-          star.twinkleDir = -1;
-        }
-
-        ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
+      particles.forEach((particle) => {
         ctx.beginPath();
-        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(215, 178, 124, ${particle.alpha})`;
+        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
         ctx.fill();
-
-        star.y -= star.velocity;
-
-        if (star.y < 0) {
-          star.y = canvas.height;
-          star.x = Math.random() * canvas.width;
-        }
+        particle.y -= particle.speed;
+        particle.x += particle.drift;
+        if (particle.y < -5) particle.y = canvas.height + 5;
       });
-
-      animationFrameId = requestAnimationFrame(animate);
+      frame = window.requestAnimationFrame(draw);
     };
 
-    init();
-    animate();
-
-    const handleResize = () => {
-      init();
-    };
-
-    window.addEventListener('resize', handleResize);
-
+    resize();
+    draw();
+    window.addEventListener("resize", resize);
     return () => {
-      cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('resize', handleResize);
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("resize", resize);
     };
   }, []);
 
   return (
-    <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-      <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-purple-800/15 blur-[120px] rounded-full animate-pulse" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-blue-800/10 blur-[120px] rounded-full animate-pulse delay-700" />
-      <canvas 
-        ref={canvasRef} 
-        className="absolute inset-0 pointer-events-none opacity-70 mix-blend-screen"
-      />
+    <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
+      <div className="absolute -left-32 -top-32 h-[32rem] w-[32rem] rounded-full bg-[#8d3e4d]/20 blur-[130px]" />
+      <div className="absolute -bottom-40 -right-32 h-[34rem] w-[34rem] rounded-full bg-[#a57c50]/15 blur-[140px]" />
+      <canvas ref={canvasRef} className="absolute inset-0 opacity-70" />
     </div>
   );
 };
 
-export default Starfield;
+export default CelebrationBackdrop;

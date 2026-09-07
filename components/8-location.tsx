@@ -1,47 +1,49 @@
-import React from 'react';
-import { MapPin, Calendar } from 'lucide-react';
+import { CalendarDays, Clock3, MapPin } from "lucide-react";
+import { WEDDING_CONFIG } from "@/config/wedding";
 
 const Location = () => {
+  const { evento } = WEDDING_CONFIG;
+
   return (
-    <section className="glass rounded-[3rem] p-8 md:p-16">
-      <div className="flex flex-col md:flex-row items-center gap-12">
-        <div className="flex-1 space-y-6">
-          <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-purple-500/20 border border-purple-400/30 text-purple-200 text-sm font-medium">
-            <MapPin size={14} /> Localização
-          </div>
-          <h2 className="text-4xl font-bold font-serif text-slate-100">AD Bom Jardim 2</h2>
-          <p className="text-lg text-slate-300 leading-relaxed">
-            Nossa união acontecerá na Assembleia de Deus do Bairro Bom Jardim 2, com a celebração da cerimônia junto ao Pastor Ronaldo.
+    <section className="glass overflow-hidden rounded-[2.5rem]">
+      <div className="grid md:grid-cols-[0.9fr_1.1fr]">
+        <div className="flex flex-col justify-center p-7 md:p-12 lg:p-16">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#b89466]">Onde nos encontraremos</p>
+          <h2 className="mt-4 font-serif text-4xl font-semibold text-[#fffaf2] md:text-5xl">{evento.local}</h2>
+          <p className="mt-5 leading-7 text-[#cfc2bb]">
+            Um cenário em Blumenau para reunirmos família e amigos e começarmos, juntos, esta nova etapa.
           </p>
-          <div className="space-y-4">
-            <div className="flex items-start gap-4">
-              <div className="p-3 bg-white/5 rounded-xl"><Calendar className="text-purple-300" /></div>
-              <div>
-                <p className="font-bold text-slate-200">Data e Hora</p>
-                <p className="text-slate-300">Sexta, 12 de Junho de 2026 às 19:00</p>
-              </div>
+
+          <dl className="mt-8 space-y-5 text-sm">
+            <div className="flex gap-4">
+              <CalendarDays className="mt-0.5 shrink-0 text-[#d7b27c]" size={20} />
+              <div><dt className="font-semibold text-[#fffaf2]">Data</dt><dd className="mt-1 text-[#cfc2bb]">{evento.diaDaSemana}, {evento.dataPorExtenso}</dd></div>
             </div>
-            <div className="flex items-start gap-4">
-              <div className="p-3 bg-white/5 rounded-xl"><MapPin className="text-purple-300" /></div>
-              <div>
-                <p className="font-bold text-slate-200">Localização</p>
-                <p className="text-slate-300">R. Oscár Gonçalves, 322 - Bom Jardim, Ipatinga - MG</p>
-              </div>
+            <div className="flex gap-4">
+              <Clock3 className="mt-0.5 shrink-0 text-[#d7b27c]" size={20} />
+              <div><dt className="font-semibold text-[#fffaf2]">Horário</dt><dd className="mt-1 text-[#cfc2bb]">Às {evento.horario}</dd></div>
             </div>
-          </div>
-          <a href="https://maps.app.goo.gl/ezYQExTbgH8i8gFx8" target="_blank">
-            <button className="w-full md:w-auto px-8 py-4 bg-slate-200 text-[#1b1c26] font-bold rounded-2xl hover:bg-white hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-all cursor-pointer">
-              Obter Rotas no Maps
-            </button>
+            <div className="flex gap-4">
+              <MapPin className="mt-0.5 shrink-0 text-[#d7b27c]" size={20} />
+              <div><dt className="font-semibold text-[#fffaf2]">Endereço</dt><dd className="mt-1 text-[#cfc2bb]">{evento.endereco}</dd></div>
+            </div>
+          </dl>
+
+          <a href={evento.mapsUrl} target="_blank" rel="noopener noreferrer" className="mt-9 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#d7b27c] px-6 py-3.5 text-sm font-bold text-[#241719] transition-colors hover:bg-[#ead8bd] md:w-fit">
+            <MapPin size={18} /> Abrir no Google Maps
           </a>
         </div>
-        <div className="flex-1 w-full aspect-square rounded-3xl overflow-hidden bg-black/40 border border-white/10 relative group">
-          <div className="absolute inset-0 opacity-40 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-800/30 via-transparent to-transparent group-hover:scale-105 transition-transform duration-1000" />
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:2rem_2rem]" />
-          
-          <div className="absolute inset-0 flex items-center justify-center flex-col">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d664.9511506568658!2d-42.58120664749376!3d-19.475745598535156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xafff8577cc4711%3A0xb9584c1e69ce55ba!2sIgreja%20Assembleia%20de%20Deus%20Bom%20Jardim%202!5e0!3m2!1spt-BR!2sbr!4v1776542485415!5m2!1spt-BR!2sbr" width="400" height="450" allowFullScreen={false} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
-          </div>
+
+        <div className="min-h-[25rem] border-t border-[#ead8bd]/10 md:min-h-[34rem] md:border-l md:border-t-0">
+          <iframe
+            src={evento.mapsEmbedUrl}
+            title="Mapa do Edifício Paladium, em Blumenau"
+            width="100%"
+            height="100%"
+            className="h-full min-h-[25rem] w-full border-0 grayscale-[20%] contrast-[95%]"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
         </div>
       </div>
     </section>
