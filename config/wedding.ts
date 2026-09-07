@@ -1,3 +1,6 @@
+export const withBasePath = (path: string) =>
+  `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${path}`;
+
 export const WEDDING_CONFIG = {
   casal: {
     noiva: "Eliane",
@@ -18,25 +21,25 @@ export const WEDDING_CONFIG = {
   },
   fotos: [
     {
-      src: "/images/eliane-miguel-03.jpeg",
+      src: withBasePath("/images/eliane-miguel-03.jpeg"),
       alt: "Eliane e Miguel brindando em uma celebração",
       formato: "retrato",
     },
     {
-      src: "/images/eliane-miguel-02.jpeg",
+      src: withBasePath("/images/eliane-miguel-02.jpeg"),
       alt: "Eliane e Miguel sorrindo juntos",
       formato: "retrato",
     },
     {
-      src: "/images/eliane-miguel-04.jpeg",
+      src: withBasePath("/images/eliane-miguel-04.jpeg"),
       alt: "Eliane e Miguel em um jantar a dois",
       formato: "paisagem",
     },
     {
-      src: "/images/eliane-miguel-01.jpeg",
+      src: withBasePath("/images/eliane-miguel-01.jpeg"),
       alt: "Eliane e Miguel compartilhando um momento especial",
       formato: "retrato",
     },
   ] as const,
-  fotoDestaque: "/images/eliane-miguel-04.jpeg",
+  fotoDestaque: withBasePath("/images/eliane-miguel-04.jpeg"),
 };

@@ -1,11 +1,11 @@
 import { CalendarPlus, MapPinned } from "lucide-react";
-import { WEDDING_CONFIG } from "@/config/wedding";
+import { WEDDING_CONFIG, withBasePath } from "@/config/wedding";
 
 const QuickActions = () => {
   return (
     <section aria-label="Ações rápidas" className="grid gap-5 md:grid-cols-2">
       <a
-        href="/event/convite.ics"
+        href={withBasePath("/event/convite.ics")}
         download="casamento-eliane-miguel.ics"
         className="group flex items-center gap-5 rounded-3xl border border-[#d7b27c]/20 bg-[#d7b27c]/10 p-6 transition-all hover:-translate-y-1 hover:border-[#d7b27c]/45 hover:bg-[#d7b27c]/15 md:p-8"
       >

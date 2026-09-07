@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Great_Vibes, Montserrat } from "next/font/google";
+import { withBasePath } from "@/config/wedding";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
     siteName: "Eliane & Miguel",
     images: [
       {
-        url: "/og.png",
+        url: withBasePath("/og.png"),
         width: 1200,
         height: 630,
         alt: "Eliane & Miguel — 10 de outubro de 2026, Blumenau",
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Casamento de Eliane & Miguel",
     description: "Amor, vida e um novo começo — 10 de outubro de 2026.",
-    images: ["/og.png"],
+    images: [withBasePath("/og.png")],
   },
 };
 

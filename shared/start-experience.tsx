@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { Heart } from 'lucide-react';
+import { withBasePath } from '@/config/wedding';
 
 interface StartExperienceProps {
   onStart: () => void;
@@ -23,7 +24,7 @@ export default function StartExperience({ onStart }: StartExperienceProps) {
 
   return (
     <>
-      <audio ref={audioRef} src="/music/audio.mp3" loop />
+      <audio ref={audioRef} src={withBasePath("/music/audio.mp3")} loop />
       {!hasStarted && (
         <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#1b1114]/80 px-6 backdrop-blur-md transition-all duration-1000">
           <button 
