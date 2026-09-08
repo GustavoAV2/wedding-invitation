@@ -1,4 +1,6 @@
-import { CakeSlice, Heart, Sparkles } from "lucide-react";
+import Image from "next/image";
+import { CakeSlice, Heart } from "lucide-react";
+import { withBasePath } from "@/config/wedding";
 
 const Story = () => {
   return (
@@ -31,10 +33,15 @@ const Story = () => {
           </p>
         </div>
 
-        <div className="mx-auto my-10 flex max-w-md items-center gap-4 text-[#b88d59]">
-          <span className="h-px flex-1 bg-current opacity-40" />
-          <Sparkles size={18} />
-          <span className="h-px flex-1 bg-current opacity-40" />
+        <div className="relative mx-auto my-10 aspect-[3/4] w-[min(68vw,16rem)] overflow-hidden rounded-[2rem] border border-[#b88d59]/30 bg-[#ead8bd] shadow-[0_1.25rem_3rem_rgba(76,35,43,0.18)]">
+          <Image
+            src={withBasePath("/images/eliane-miguel-anel.jpeg")}
+            alt="As alianças de Eliane e Miguel"
+            fill
+            sizes="(max-width: 768px) 68vw, 256px"
+            className="object-cover"
+          />
+          <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#3b1f26]/10 via-transparent to-white/10" />
         </div>
 
         <p className="font-serif text-2xl italic leading-relaxed text-[#6f3440] md:text-3xl">
