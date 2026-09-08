@@ -14,7 +14,7 @@ const QuickActions = () => {
         </span>
         <span>
           <strong className="block font-serif text-2xl text-[#fffaf2]">Guardar essa data</strong>
-          <span className="mt-1 block text-sm leading-6 text-[#d8ccc5]">
+          <span className="mt-1 block text-base leading-6 text-[#d8ccc5]">
             Adicione 10 de outubro à sua agenda.
           </span>
         </span>
@@ -31,7 +31,7 @@ const QuickActions = () => {
         </span>
         <span>
           <strong className="block font-serif text-2xl text-[#fffaf2]">Como chegar</strong>
-          <span className="mt-1 block text-sm leading-6 text-[#d8ccc5]">
+          <span className="mt-1 block text-base leading-6 text-[#d8ccc5]">
             Abra a localização do Edifício Paladium.
           </span>
         </span>

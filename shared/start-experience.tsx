@@ -41,7 +41,7 @@ export default function StartExperience({ onStart }: StartExperienceProps) {
                 <Heart className="h-10 w-10 text-[#ead8bd] transition-transform group-hover:scale-110 md:h-14 md:w-14" strokeWidth={1.3} />
               </div>
             </div>
-            <span className="text-center text-sm font-light uppercase tracking-[0.26em] text-[#eadfd3] md:text-base">
+            <span className="text-center text-base font-light uppercase tracking-[0.26em] text-[#eadfd3] md:text-lg">
               <div className="mb-3 font-serif text-2xl normal-case tracking-normal text-[#fffaf2]">Eliane &amp; Miguel</div>
               <div>Toque para abrir o convite</div>
             </span>

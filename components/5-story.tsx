@@ -17,7 +17,7 @@ const Story = () => {
           Quando a vida e o amor escolhem a mesma data
         </h2>
 
-        <div className="mx-auto mt-9 max-w-3xl space-y-6 text-base leading-8 text-[#59484b] md:text-lg">
+        <div className="mx-auto mt-9 max-w-3xl space-y-6 text-[1.0625rem] leading-8 text-[#59484b] md:text-lg">
           <p>
             Escolhemos um dia muito especial para celebrar o nosso amor. No dia
             10 de outubro, enquanto Eliane agradece por mais um ano de vida,

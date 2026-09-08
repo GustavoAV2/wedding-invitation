@@ -52,11 +52,7 @@ const Hero = () => {
             Amor, vida e um novo começo.
           </p>
           <div className="my-9 h-px w-20 bg-[#d7b27c]/70" />
-          <p className="max-w-lg text-sm leading-7 text-[#d8ccc5] md:text-base">
-            No dia em que Eliane celebra mais um ano de vida, nós também
-            celebraremos o início de uma nova etapa da nossa história.
-          </p>
-          <p className="mt-7 text-sm font-semibold uppercase tracking-[0.22em] text-[#fffaf2] md:text-base">
+          <p className="mt-7 text-base font-semibold uppercase tracking-[0.22em] text-[#fffaf2] md:text-[1.0625rem]">
             10 de outubro <span className="mx-2 text-[#d7b27c]">•</span> 11 horas
           </p>
         </div>

@@ -32,7 +32,7 @@ const InfoCards = () => {
             {eyebrow}
           </p>
           <h2 className="font-serif text-3xl font-semibold text-[#fffaf2]">{title}</h2>
-          <p className="mt-4 text-sm leading-6 text-[#cfc2bb]">{description}</p>
+          <p className="mt-4 text-base leading-6 text-[#cfc2bb]">{description}</p>
         </article>
       ))}
     </section>

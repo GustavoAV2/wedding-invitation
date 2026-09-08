@@ -21,25 +21,65 @@ export const WEDDING_CONFIG = {
   },
   fotos: [
     {
-      src: withBasePath("/images/eliane-miguel-03.jpeg"),
-      alt: "Eliane e Miguel brindando em uma celebração",
-      formato: "retrato",
-    },
-    {
-      src: withBasePath("/images/eliane-miguel-02.jpeg"),
-      alt: "Eliane e Miguel sorrindo juntos",
+      src: withBasePath("/images/eliane-miguel-01.jpeg"),
+      alt: "Eliane e Miguel em um momento especial",
       formato: "retrato",
     },
     {
       src: withBasePath("/images/eliane-miguel-04.jpeg"),
-      alt: "Eliane e Miguel em um jantar a dois",
+      alt: "Eliane e Miguel celebrando juntos",
       formato: "paisagem",
     },
     {
-      src: withBasePath("/images/eliane-miguel-01.jpeg"),
-      alt: "Eliane e Miguel compartilhando um momento especial",
-      formato: "retrato",
+      src: withBasePath("/images/WhatsApp Image 2026-09-07 at 20.02.37.jpeg"),
+      alt: "Eliane e Miguel em uma lembrança especial",
+      formato: "paisagem",
+    },
+    {
+      src: withBasePath("/images/WhatsApp Image 2026-09-07 at 20.02.37 (1).jpeg"),
+      alt: "Eliane e Miguel em uma lembrança especial",
+      formato: "paisagem",
+    },
+    {
+      src: withBasePath("/images/WhatsApp Image 2026-09-07 at 20.02.37 (2).jpeg"),
+      alt: "Eliane e Miguel em uma lembrança especial",
+      formato: "paisagem",
+    },
+    {
+      src: withBasePath("/images/WhatsApp Image 2026-09-07 at 20.02.38.jpeg"),
+      alt: "Eliane e Miguel em uma lembrança especial",
+      formato: "paisagem",
+    },
+    {
+      src: withBasePath("/images/WhatsApp Image 2026-09-07 at 20.02.38 (1).jpeg"),
+      alt: "Eliane e Miguel em uma lembrança especial",
+      formato: "paisagem",
+    },
+    {
+      src: withBasePath("/images/WhatsApp Image 2026-09-07 at 20.02.38 (2).jpeg"),
+      alt: "Eliane e Miguel em uma lembrança especial",
+      formato: "paisagem",
+    },
+    {
+      src: withBasePath("/images/WhatsApp Image 2026-09-07 at 20.02.39.jpeg"),
+      alt: "Eliane e Miguel em uma lembrança especial",
+      formato: "paisagem",
+    },
+    {
+      src: withBasePath("/images/WhatsApp Image 2026-09-07 at 20.02.39 (1).jpeg"),
+      alt: "Eliane e Miguel em uma lembrança especial",
+      formato: "paisagem",
+    },
+    {
+      src: withBasePath("/images/WhatsApp Image 2026-09-07 at 20.02.39 (2).jpeg"),
+      alt: "Eliane e Miguel em uma lembrança especial",
+      formato: "paisagem",
+    },
+    {
+      src: withBasePath("/images/WhatsApp Image 2026-09-07 at 20.02.39 (3).jpeg"),
+      alt: "Eliane e Miguel em uma lembrança especial",
+      formato: "paisagem",
     },
   ] as const,
-  fotoDestaque: withBasePath("/images/eliane-miguel-04.jpeg"),
+  fotoDestaque: withBasePath("/images/capa_convite_abertrura.jpeg"),
 };

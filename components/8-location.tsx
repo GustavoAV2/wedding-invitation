@@ -14,7 +14,7 @@ const Location = () => {
             Um cenário em Blumenau para reunirmos família e amigos e começarmos, juntos, esta nova etapa.
           </p>
 
-          <dl className="mt-8 space-y-5 text-sm">
+          <dl className="mt-8 space-y-5 text-base">
             <div className="flex gap-4">
               <CalendarDays className="mt-0.5 shrink-0 text-[#d7b27c]" size={20} />
               <div><dt className="font-semibold text-[#fffaf2]">Data</dt><dd className="mt-1 text-[#cfc2bb]">{evento.diaDaSemana}, {evento.dataPorExtenso}</dd></div>
@@ -29,7 +29,7 @@ const Location = () => {
             </div>
           </dl>
 
-          <a href={evento.mapsUrl} target="_blank" rel="noopener noreferrer" className="mt-9 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#d7b27c] px-6 py-3.5 text-sm font-bold text-[#241719] transition-colors hover:bg-[#ead8bd] md:w-fit">
+          <a href={evento.mapsUrl} target="_blank" rel="noopener noreferrer" className="mt-9 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#d7b27c] px-6 py-3.5 text-base font-bold text-[#241719] transition-colors hover:bg-[#ead8bd] md:w-fit">
             <MapPin size={18} /> Abrir no Google Maps
           </a>
         </div>

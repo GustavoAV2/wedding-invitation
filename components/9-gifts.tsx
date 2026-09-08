@@ -8,7 +8,7 @@ const GiftSection = () => {
       <h2 className="mx-auto mt-4 max-w-3xl font-serif text-4xl font-semibold leading-tight text-[#fffaf2] md:text-5xl">
         Dividir essa alegria com quem amamos
       </h2>
-      <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-[#cfc2bb]">
+      <p className="mx-auto mt-6 max-w-2xl text-[1.0625rem] leading-8 text-[#cfc2bb]">
         Sua presença, seu abraço e o carinho de celebrar ao nosso lado são o maior presente que poderíamos receber.
       </p>
     </section>
